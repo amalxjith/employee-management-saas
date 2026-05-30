@@ -15,6 +15,7 @@ exports.getUsers = asyncHandler(async (req, res) => {
 
   const users = await User.find(query)
     .select("-password")
+    .sort({ createdAt: -1 })
     .skip((page - 1) * limit)
     .limit(limit);
 
